@@ -7,10 +7,13 @@ require("./connetion/conn");
 const userroute = require("./routes/user");
 const bookroute = require("./routes/book");
 const favouriteRoute = require("./routes/favourite");
+const cartRoute = require("./routes/cart");
 
 app.use("/api/v1",userroute);
 app.use("/api/v1",bookroute);
 app.use("/api/v1",favouriteRoute);
+app.use("/api/v1",cartRoute);
+
 
 app.get("/",(req,res)=>{
     res.send({message:"hello from server"});
