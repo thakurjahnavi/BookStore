@@ -47,5 +47,15 @@ router.get("/get-all-orders",authenticateToken,async(req,res)=>{
     catch(err){
         return res.status(500).json({message:"Internal server error",err});
     }
+});
+router.put("/update-status/:id",authenticateToken,async(req,res)=>{
+    try{
+            const{id} = req.params;
+            await Order.findByIdAndUpdate({id,status:req.body.status});
+            return res.json({status:"success",message:"status updated successfully"});
+    }
+    catch(err){
+        return res.status(500).json({message:"Internal server error",err});
+    }
 })
 module.exports = router;
